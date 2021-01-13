@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky - 邮箱验证{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>您好，{{ current_user.username }}</h1>
+    <h3>您尚未确认您的帐户</h3>
+    <p>您需要先确认您的帐户，然后才能访问该网站。检查您的邮箱，您应该已经收到带有确认链接的电子邮件</p>
+    <p>需要再次发送验证邮件？<a href="{{ url_for('auth.resend_confirmation') }}">点击这里</a></p>
+</div>
+{% endblock %}

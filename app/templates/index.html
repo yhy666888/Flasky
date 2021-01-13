@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>你好, {% if name %}{{ name }}{% else %}游客{% endif %}！</h1>
+    {% if not known %}
+    <p>很高兴见到你！</p>
+    {% else %}
+    <p>欢迎回来！</p>
+    {% endif %}
+
+    {% if current_user.is_authenticated %}
+    <b>{{ current_user.username }}</b>
+    {% else %}
+    <b>游客</b>
+    {% endif %}
+</div>
+<p>当前的日期时间是 {{ moment(current_time).format('LLL') }}.</p>
+<p>这是{{ moment(current_time).fromNow(refresh=True) }}</p>
+{{ wtf.quick_form(form) }}
+{% endblock %}
